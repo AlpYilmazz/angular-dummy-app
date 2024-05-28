@@ -3,6 +3,13 @@ on:
     branches:
       - ${{env.BRANCH_NAME}}
 
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
+
 jobs:
   build:
     name: Build
