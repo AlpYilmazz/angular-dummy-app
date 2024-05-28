@@ -1,12 +1,8 @@
 on:
-  push:
-    branches:
-      - ${{env.BRANCH_NAME}}
-
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Environment to run tests against'
+        description: 'Deployment Environment'
         type: environment
         required: true
 
