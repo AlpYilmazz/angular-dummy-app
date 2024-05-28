@@ -1,0 +1,21 @@
+on:
+  push:
+    branches:
+      - ${{env.BRANCH_NAME}}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${ { env.NODE_VERSION } }
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${ { env.NODE_VERSION } }
+        cache: "npm"
+        cache-dependency-path: package-lock.json
+        
+    - name: npm install, build, and test
+      run: |
+        npm install
